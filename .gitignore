@@ -1,0 +1,6 @@
+Configs/application.ini
+Temp/Analytics/*.csv
+Temp/Captcha/*.png
+UserFiles/.quarantine
+UserFiles/.tmb
+.DS_Store

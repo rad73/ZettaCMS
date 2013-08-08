@@ -1,0 +1,53 @@
+php_flag magic_quotes_gpc 0
+
+# выдача резальтатов сторго в utf-8
+php_value default_charset UTF-8
+# php_value mbstring.func_overload 4	Zend_Search_Lucene требует 4
+AddDefaultCharset UTF-8
+
+# режим работы CMS
+<IfModule mod_env.c>
+SetEnv ZETTA_MODE development
+</IfModule>
+
+# mod_rewrite
+RewriteEngine on
+
+# добавляем слеш в конце
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !.*\/mvc\/.*$
+RewriteCond %{REQUEST_URI} !\..+$
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteCond %{REQUEST_METHOD} =GET
+RewriteRule ^(.*[^/])$ %{REQUEST_URI}/ [L,R=301]
+
+# Редирект с wwww на сайт
+RewriteCond %{REQUEST_URI} !^/robots\.txt$ [NC]
+RewriteCond %{HTTP_HOST} !^www\.[a-z-]+\.[a-z]{2,6} [NC]
+RewriteCond %{HTTP_HOST} ([a-z-]+\.[a-z]{2,6})$ [NC]
+RewriteRule ^/(.*)$ http://%1/$1 [R=301,L]
+
+# библиотека файлов закрытых от доступа
+RewriteRule zlib/.* zetta_quick.php
+
+# генерация превью картинок
+RewriteCond %{REQUEST_URI} UserFiles/(.+)\.(jpg|png)$ 
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteRule ^(.+)$ zetta_quick.php
+
+
+# Основные правила
+RewriteCond %{REQUEST_URI} !/*.txt$
+RewriteCond %{REQUEST_URI} !/*.xml$
+RewriteCond %{REQUEST_URI} !zetta.php
+RewriteCond %{REQUEST_URI} !thumbnailer.php
+RewriteCond %{REQUEST_URI} !public/.*
+RewriteCond %{REQUEST_URI} !Temp/.*
+RewriteCond %{REQUEST_URI} !UserFiles/.*
+RewriteCond %{REQUEST_URI} !zetta_quick.php
+RewriteRule ^(.*)$ zetta.php
+
+<files *.ini>
+order deny,allow
+deny from all
+</files>

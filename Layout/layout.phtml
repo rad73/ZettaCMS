@@ -1,0 +1,42 @@
+<?php echo $this->doctype();?>
+<!--[if lt IE 8]><html class="ltie8"><![endif]-->
+<!--[if IE 8]><html class="ie8"><![endif]-->
+<head>
+
+<?php
+
+	echo $this
+		->headTitle($this->siteConfig('sitename'))
+		->headTitle()->setSeparator(' - ');
+	
+	echo $this->headMeta();
+		
+	echo $this->headLink()
+		->prependStylesheet($this->libUrl('/css/global.css'))
+		->appendStylesheet($this->fileUrl('/public/css/style.css'))
+		->headLink(array('rel' => 'shortcut icon', 'href' => $this->fileUrl('/UserFiles/images/favicon.ico')), 'PREPEND');
+
+?>
+
+</head>
+
+<body id="<?php echo ($this->current_route['route_id'] == 1 ? 'home' : 'inner') ?>">
+	
+	<div id="body">
+		<!--index--><?php echo $this->layout()->content ?><!--/index-->
+	</div>
+
+	<?php echo $this->partial('ltie8.phtml') ?>
+	
+<?php
+
+	echo $this->headScript()
+		->prependFile($this->libUrl('/js/jquery.min.js'))
+		->appendFile($this->fileUrl('/public/js/main.js'));
+
+	echo $this->partial('ga.phtml');
+
+?>
+
+</body>
+</html>

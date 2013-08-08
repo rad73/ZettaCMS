@@ -1,0 +1,28 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+<?php
+
+	echo $this
+		->headTitle($this->siteConfig('sitename'))
+		->headTitle()->setSeparator(' - ');
+	
+	echo $this->headMeta();
+
+	echo $this->headLink()
+		->prependStylesheet($this->libUrl('/css/global.css'));
+			
+?>
+</head>
+
+<body>
+
+	<div id="body">
+		<?php echo $this->layout()->content ?>
+	</div>
+
+<?php
+	echo $this->headScript() 
+?>
+</body>
+</html>
