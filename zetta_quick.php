@@ -14,11 +14,12 @@ require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->setFallbackAutoloader(true);
 
 /* Включаем конфигурационные файлы */
-$application = new Zend_Application(ZETTA_MODE, array('config' => array_merge(
-	array(
-		SYSTEM_PATH . '/Configs/_router.ini',
-		SYSTEM_PATH . '/Configs/_frontcontroller.ini',
-	)
+$application = new Zend_Application(ZETTA_MODE, array('config' => array(
+	SYSTEM_PATH . '/Configs/_autoloader.ini',
+	SYSTEM_PATH . '/Configs/_log.ini',
+	SYSTEM_PATH . '/Configs/_router.ini',
+	SYSTEM_PATH . '/Configs/_frontcontroller.ini',
+	SYSTEM_PATH . '/Configs/application_quick.ini',
 )));
 
 $application
