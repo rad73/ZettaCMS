@@ -22,6 +22,22 @@ $application = new Zend_Application(ZETTA_MODE, array('config' => array_merge(
 
 try {
 	
+	if (false == defined('HTTP_HOST')) {	
+		
+		// вероятнее всего произошел запуск из консоли
+		// php zetta.php --host=asdf.by --url=/login
+		
+		$arrayInput = getopt(false, array('url:', 'host:'));
+		if (array_key_exists('host', $arrayInput)) {
+			define('HTTP_HOST', 'http://' . $arrayInput['host']);
+			$_SERVER['HTTP_HOST'] = HTTP_HOST;
+		}
+		if (array_key_exists('url', $arrayInput)) {
+			$_SERVER['REQUEST_URI'] = $arrayInput['url'];
+		}
+		
+	}
+	
 	$application
 		->bootstrap()
 		->run();

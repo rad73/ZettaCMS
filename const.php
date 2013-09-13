@@ -15,7 +15,8 @@ defined('TEMP_PATH')	|| define('TEMP_PATH', FILE_PATH . '/Temp');
 defined('MODULES_PATH')	|| define('MODULES_PATH', SYSTEM_PATH . '/Modules');
 defined('HEAP_PATH')	|| define('HEAP_PATH', FILE_PATH . '/Heap');
 defined('USER_FILES_PATH')	|| define('USER_FILES_PATH', FILE_PATH . '/UserFiles');
-defined('HTTP_HOST')	|| define('HTTP_HOST', 'http://' . $_SERVER['HTTP_HOST']);
-
+if (!defined('HTTP_HOST') && array_key_exists('HTTP_HOST', $_SERVER)) {
+	define('HTTP_HOST', 'http://' . $_SERVER['HTTP_HOST']);
+}
 
 set_include_path(SYSTEM_PATH . PATH_SEPARATOR . LIBRARY_PATH . PATH_SEPARATOR . get_include_path());
