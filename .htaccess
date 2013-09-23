@@ -12,6 +12,7 @@ SetEnv ZETTA_MODE development
 
 # mod_rewrite
 RewriteEngine on
+RewriteBase /
 
 # добавляем слеш в конце
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -30,7 +31,7 @@ RewriteRule zlib/.* zetta_quick.php
 
 # генерация превью картинок
 RewriteCond %{REQUEST_URI} UserFiles/(.+)\.(jpg|png)$ 
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ zetta_quick.php
 
 
