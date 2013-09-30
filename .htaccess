@@ -38,13 +38,10 @@ RewriteRule ^(.+)$ zetta_quick.php
 # Основные правила
 RewriteCond %{REQUEST_URI} !/*.txt$
 RewriteCond %{REQUEST_URI} !/*.xml$
-RewriteCond %{REQUEST_URI} !zetta.php
-RewriteCond %{REQUEST_URI} !thumbnailer.php
 RewriteCond %{REQUEST_URI} !public/.*
 RewriteCond %{REQUEST_URI} !zlib/.*
 RewriteCond %{REQUEST_URI} !Temp/.*
 RewriteCond %{REQUEST_URI} !UserFiles/.*
-RewriteCond %{REQUEST_URI} !zetta_quick.php
 RewriteRule ^(.*)$ zetta.php
 
 <files *.ini>
