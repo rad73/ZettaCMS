@@ -14,6 +14,10 @@ SetEnv ZETTA_MODE development
 RewriteEngine on
 RewriteBase /
 
+# Убираем точку в конце домена
+RewriteCond %{HTTP_HOST} ^(.*)\./?$ [NC]
+RewriteRule ^(.*)$ http:\/\/%1/$1 [R=301,L]
+
 # добавляем слеш в конце
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !.*\/mvc\/.*$
