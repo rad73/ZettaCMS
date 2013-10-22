@@ -18,6 +18,7 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^(.*)\./?$ [NC]
 RewriteRule ^(.*)$ http:\/\/%1/$1 [R=301,L]
 
+
 # добавляем слеш в конце
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !.*\/mvc\/.*$
@@ -46,6 +47,7 @@ RewriteCond %{REQUEST_URI} !public/.*
 RewriteCond %{REQUEST_URI} !zlib/.*
 RewriteCond %{REQUEST_URI} !Temp/.*
 RewriteCond %{REQUEST_URI} !UserFiles/.*
+RewriteCond %{REQUEST_URI} !zetta_quick.php
 RewriteRule ^(.*)$ zetta.php
 
 <files *.ini>
