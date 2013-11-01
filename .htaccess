@@ -39,10 +39,12 @@ RewriteCond %{REQUEST_URI} UserFiles/(.+)\.(jpg|png)$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ zetta_quick.php
 
+RewriteRule ^favicon.ico$  /UserFiles/images/favicon.ico
 
 # Основные правила
 RewriteCond %{REQUEST_URI} !/*.txt$
 RewriteCond %{REQUEST_URI} !/*.xml$
+RewriteCond %{REQUEST_URI} !favicon.ico$ 
 RewriteCond %{REQUEST_URI} !public/.*
 RewriteCond %{REQUEST_URI} !zlib/.*
 RewriteCond %{REQUEST_URI} !Temp/.*
