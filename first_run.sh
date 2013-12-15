@@ -9,5 +9,6 @@ chmod 0777 ./Temp/Captcha
 chmod 0777 ./Temp/Log
 chmod 0777 ./Temp/Search
 chmod 0777 ./Temp/Session
+chmod 0777 ./Temp/Backups
 chmod -R 0777 ./UserFiles
 find ./ -name ".htaccess" -exec chmod 0644 {} \;

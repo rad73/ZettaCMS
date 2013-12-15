@@ -23,7 +23,7 @@ if (!defined('HTTP_HOST')) {	// вычисляем HTTP_HOST
 	}
 	else {
 		$arrayInput = getopt(false, array('host:'));
-		if (array_key_exists('host', $arrayInput)) {
+		if (is_array($arrayInput) && array_key_exists('host', $arrayInput)) {
 			define('HTTP_HOST', 'http://' . $arrayInput['host']);
 		}
 		else {

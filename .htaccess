@@ -1,3 +1,7 @@
+Order allow,deny 
+Deny from 5.248.86.106 
+Allow from all
+
 php_flag magic_quotes_gpc 0
 
 # выдача резальтатов сторго в utf-8
