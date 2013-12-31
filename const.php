@@ -18,8 +18,8 @@ defined('USER_FILES_PATH')	|| define('USER_FILES_PATH', realpath(FILE_PATH . DS 
 
 if (!defined('HTTP_HOST')) {	// вычисляем HTTP_HOST
 	
-	if (array_key_exists('HTTP_HOST', $_SERVER)) {
-		define('HTTP_HOST', 'http://' . $_SERVER['HTTP_HOST']);
+	if (array_key_exists('SERVER_NAME', $_SERVER)) {
+		define('HTTP_HOST', 'http://' . $_SERVER['SERVER_NAME']);
 	}
 	else {
 		$arrayInput = getopt(false, array('host:'));
