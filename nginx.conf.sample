@@ -1,0 +1,41 @@
+server {
+
+	server_name zetta.dev;
+	root /var/www/zetta.dev;
+
+	location / {
+		rewrite ^(.*[^/])$ $1/ permanent;
+		try_files $uri @zetta_cms;
+	}
+
+	location ~ \.php$ {
+		fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include fastcgi_params;
+	}
+
+
+	location ~ \.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|doc|xls|exe|pdf|ppt|txt|tar|mid|midi|wav|bmp|rtf|js|swf|xpi|ttf|otf|ttf|svg|woff|oet)$ {
+		try_files $uri @zetta_cms_quick;
+		expires 30d;
+	}
+
+	location ~ \.(sample|git*|ini) {
+		rewrite .* /404/;
+	}
+
+	location @zetta_cms {
+		fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+		fastcgi_param SCRIPT_FILENAME $document_root/zetta.php;
+		include fastcgi_params;
+	}
+
+	location @zetta_cms_quick {
+		fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+		fastcgi_param SCRIPT_FILENAME $document_root/zetta_quick.php;
+		include fastcgi_params;
+	}
+
+	rewrite favicon.ico /UserFiles/images/favicon.ico;
+
+}
