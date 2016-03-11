@@ -1,15 +1,10 @@
 <?php
 
 ob_start();
-require_once 'const.php';
+require_once 'autoloader.php';
 
 /* Обрабатываем все ошибки включая фатальные */
-require_once 'Zetta/ErrorHandler.php';
 register_shutdown_function(array(new Zetta_ErrorHandler(), 'error'));
-
-require_once 'Zend/Loader/Autoloader.php';
-require_once 'Zend/Application.php';
-require_once 'Zend/Config/Ini.php';
 
 /* Включаем конфигурационные файлы */
 $application = new Zend_Application(ZETTA_MODE, array('config' => array_merge(
@@ -21,11 +16,11 @@ $application = new Zend_Application(ZETTA_MODE, array('config' => array_merge(
 )));
 
 try {
-	
+
 	$application
 		->bootstrap()
 		->run();
-		
+
 }
 catch (Exception $e) {
 

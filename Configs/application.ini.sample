@@ -6,21 +6,27 @@
 	; Настройки БД
 	resources.Db.adapter							= Mysqli
 	resources.Db.params.host						= localhost
-	resources.Db.params.dbname						= 
-	resources.Db.params.username					= 
-	resources.Db.params.password					= 
+	resources.Db.params.dbname						=
+	resources.Db.params.username					=
+	resources.Db.params.password					=
 	resources.Db.params.charset						= "utf8"
 	resources.Db.staticSalt							= "hard^7$%;234salt"
 
 	resources.Db.defaultMetadataCache				= "default"
 	resources.Db.params.profiler.enabled			= false
-	
+
+	; Настройки Captcha
+	app.captcha.provider = "ImageDigit"
+	app.captcha.wordLen = "4"
+	app.captcha.lineNoiseLevel = "1"
+	app.captcha.dotNoiseLevel = "10"
+
 [testing : production]
 
 
 [development : testing]
 
-	resources.Db.params.host						= 
-	resources.Db.params.dbname						= 
-	resources.Db.params.username					= 
-	resources.Db.params.password					= 
+	resources.Db.params.host						=
+	resources.Db.params.dbname						=
+	resources.Db.params.username					=
+	resources.Db.params.password					=

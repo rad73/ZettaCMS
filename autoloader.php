@@ -18,7 +18,7 @@ defined('LIBRARY_PATH')	|| define('LIBRARY_PATH', realpath(SYSTEM_PATH . DS . 'L
 defined('USER_LIBRARY_PATH')	|| define('USER_LIBRARY_PATH', realpath(FILE_PATH . DS . 'Library'));
 
 if (!defined('HTTP_HOST')) {	// вычисляем HTTP_HOST
-	
+
 	if (array_key_exists('SERVER_NAME', $_SERVER)) {
 		define('HTTP_HOST', 'http://' . $_SERVER['SERVER_NAME']);
 	}
@@ -27,12 +27,16 @@ if (!defined('HTTP_HOST')) {	// вычисляем HTTP_HOST
 		if (is_array($arrayInput) && array_key_exists('host', $arrayInput)) {
 			define('HTTP_HOST', 'http://' . $arrayInput['host']);
 		}
-		else {
-			throw new Exception('HTTP_HOST not defined');
-		}
 	}
 
 }
 
+set_include_path(
+		SYSTEM_PATH . PATH_SEPARATOR
+		. LIBRARY_PATH . PATH_SEPARATOR
+		. USER_LIBRARY_PATH . PATH_SEPARATOR
+		. HEAP_PATH . PATH_SEPARATOR
+		. MODULES_PATH . PATH_SEPARATOR
+		. get_include_path());
 
-set_include_path(SYSTEM_PATH . PATH_SEPARATOR . LIBRARY_PATH . PATH_SEPARATOR . USER_LIBRARY_PATH . PATH_SEPARATOR . get_include_path());
+require_once '.vendor/autoload.php';
