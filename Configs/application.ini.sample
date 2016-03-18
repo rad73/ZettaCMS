@@ -10,7 +10,7 @@
 	resources.Db.params.username					=
 	resources.Db.params.password					=
 	resources.Db.params.charset						= "utf8"
-	resources.Db.staticSalt							= "hard^7$%;234salt"
+	resources.Db.params.staticSalt					= "hard^7$%;234salt"
 
 	resources.Db.defaultMetadataCache				= "default"
 	resources.Db.params.profiler.enabled			= false
