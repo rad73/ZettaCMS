@@ -3,5 +3,6 @@ Temp/Analytics/*.csv
 Temp/Captcha/*.png
 UserFiles/.quarantine
 UserFiles/.tmb
+public/.compiled
 thumbs
 .DS_Store
