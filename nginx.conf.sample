@@ -8,6 +8,11 @@ server {
 		try_files $uri @zetta_cms;
 	}
 
+	location ^~ /Temp/ {
+		access_log off;
+		expires 30d;
+	}
+
 	location ~ \.php$ {
 		fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
 		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
