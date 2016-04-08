@@ -20,7 +20,7 @@ server {
 	}
 
 
-	location ~ \.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|doc|xls|exe|pdf|ppt|txt|tar|mid|midi|wav|bmp|rtf|js|swf|xpi|ttf|otf|ttf|svg|woff|oet)$ {
+	location ~ \.(jpg|jpeg|gif|png|ico|css|zip|tgz|gz|rar|bz2|doc|xls|exe|pdf|ppt|txt|tar|mid|midi|wav|bmp|rtf|js|swf|xpi|ttf|otf|ttf|svg|woff|woff2|oet)$ {
 		try_files $uri @zetta_cms_quick;
 		expires 30d;
 	}
