@@ -20,6 +20,7 @@
 	app.captcha.wordLen = "4"
 	app.captcha.lineNoiseLevel = "1"
 	app.captcha.dotNoiseLevel = "10"
+	app.captcha.expiration = "3600"
 
 [testing : production]
 
