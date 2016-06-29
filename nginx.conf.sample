@@ -4,7 +4,9 @@ server {
 	root /var/www/zetta.dev;
 
 	location / {
-		rewrite ^(.*[^/])$ $1/ permanent;
+		if ($uri !~ "\.html|\/") {
+			rewrite ^(.*[^/])$ $1/ permanent;
+		}
 		try_files $uri @zetta_cms;
 	}
 
