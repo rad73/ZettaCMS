@@ -37,6 +37,6 @@ set_include_path(
 		. USER_LIBRARY_PATH . PATH_SEPARATOR
 		. HEAP_PATH . PATH_SEPARATOR
 		. MODULES_PATH . PATH_SEPARATOR
-		. get_include_path());
+);
 
 require_once '.vendor/autoload.php';
