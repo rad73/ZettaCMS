@@ -1,0 +1,29 @@
+<?php
+
+if (!file_exists(__DIR__.'/Heap')) {
+    exit(0);
+}
+
+return PhpCsFixer\Config::create()
+    ->setRules(array(
+        '@PSR1' => true,
+        '@PSR2' => true,
+        '@Symfony:risky' => true,
+        'array_syntax' => array('syntax' => 'long'),
+        'protected_to_private' => false,
+        'full_opening_tag' => true,
+        'indentation_type' => true,
+        'array_indentation' => true,
+        'blank_line_after_opening_tag' => true,
+        'blank_line_before_statement' => true,
+        'braces' => true,
+        'binary_operator_spaces' => true,
+        'no_blank_lines_after_class_opening' => true,
+    ))
+    ->setRiskyAllowed(true)
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(__DIR__.'/Heap')
+            ->append(array(__FILE__))
+    )
+;

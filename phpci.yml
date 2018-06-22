@@ -1,0 +1,44 @@
+build_settings:
+    ignore:
+        - ".vendor"
+        - "tests"
+    redmine:
+        server: http://task.euroopt.by
+        api_key: 3401c76434a9434421983a3cfe73c6f95c09232f
+
+setup:
+    #shell:
+    #   - "cd %BUILD_PATH%/config/parameters && mv market.yaml.default market.yaml"
+    #  - "cd %BUILD_PATH%/config/parameters && mv sms.yaml.default sms.yaml"
+    composer:
+        action: "install"
+
+test:
+    php_loc:
+        directory: "Heap"
+    php_docblock_checker:
+        skip_classes: true
+        path: Heap
+        allow_failures: true
+    php_mess_detector:
+        path: Heap
+        allow_failures: true
+        rules:
+            - "codesize"
+            - "unusedcode"
+    php_code_sniffer:
+        standard: "PSR2"
+        path: Heap
+        ignore:
+            - "Heap/Migrations"
+            - "Heap/*/views/helpers"
+            - "Heap/*/App/validators"
+    php_cpd:
+        path: Heap
+        allow_failures: true
+    php_unit:
+        config:
+            - "phpunit.xml.dist"
+complete:
+    \Intaro\PHPCI\Plugin\Redmine:
+        enabled: true

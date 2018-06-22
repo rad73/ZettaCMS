@@ -1,0 +1,20 @@
+{
+    "require": {
+        "php": "^7.1",
+        "dirmax/zettaframework": "^1.0",
+        "symfony/var-dumper": "^4.1"
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.6",
+        "sebastian/phpcpd": "^3",
+        "squizlabs/php_codesniffer": "^3.2",
+        "phpunit/phpunit": "^5"
+    },
+    "repositories": [{
+        "url": "https://github.com/dirmax/ZFDebug.git",
+        "type": "git"
+    },{
+        "url": "https://github.com/dirmax/PHPThumb.git",
+        "type": "git"
+    }]
+}
